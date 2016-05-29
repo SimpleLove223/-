@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../05-19/base.css">
+    <style>
+        div{
+            width: 350px;
+            height: 220px;
+            overflow: hidden;
+        }
+        ul{
+            width: 1050px;
+        }
+        li{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <ul>
+            <li><img src="img/3-1.jpg"></li>
+            <li><img src="img/3-2.jpg"></li>
+            <li><img src="img/3-3.jpg"></li>
+        </ul>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.js"></script>
+    <script>
+
+        var imgWidth = $(".wrapper").width();//ul移动一次的距离
+        var imgLength = $("ul li").length;//判断索引为最后一个时，重新置为0
+        var index = 0;//索引
+
+        function changeImg(direction){
+            if(direction == "left"){
+                index++;
+            }else{
+                index--;
+            }
+            if(index == imgLength){
+                index=0;
+            }else if(index == -1){
+                index=imgLength-1;
+            }
+            $("ul").stop().animate({
+                marginLeft:-index*imgWidth+"px",
+            },600)
+        }
+
+        function autoMove(){
+            setInterval(function(){
+                changeImg("left");
+
+            },2000)
+        }
+        autoMove();
+    </script>
+</body>
+</html>

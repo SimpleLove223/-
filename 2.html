@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <link rel="stylesheet" type="text/css" href="css/swipe.css" />
+  </head>
+  <body>
+    <!--轮播图-->
+    <div class="carousel">
+      <div id="slider" class="swipe" style="visibility:visible;">
+        <div class="swipe-wrap">
+          <figure>
+            <div class="face faceInner">
+              <img src="img/4-1.jpg" width="100%" height="100%" />
+            </div>
+          </figure>
+          <figure>
+            <div class="face faceInner">
+              <img src="img/4-2.jpg" width="100%" height="100%" />
+            </div>
+          </figure>
+          <figure>
+            <div class="face faceInner">
+              <img src="img/4-3.jpg" width="100%" height="100%" />
+            </div>
+          </figure>
+          <figure>
+            <div class="face faceInner">
+              <img src="img/4-4.jpg" width="100%" height="100%" />
+            </div>
+          </figure>
+        </div>
+      </div>
+      <nav>
+        <ul id="position">
+          <li class="on"></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </nav>
+    </div>
+    <script src="js/swipe.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+      var slider = Swipe(document.getElementById('slider'), {
+        auto: 3000,//轮播时间
+        continuous: true,//是否连续播放
+        disableScroll: false,
+        callback: function(pos) {
+          var i = bullets.length;
+          while (i--) {
+            bullets[i].className = ' ';
+          }
+          bullets[pos].className = 'on';
+        }
+      });
+      var bullets = document.getElementById('position').getElementsByTagName('li');
+    </script>
+  </body>
+
+</html>
